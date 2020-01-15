@@ -4785,7 +4785,7 @@ html.is-reveal-open {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   display: none;
-  padding: 1rem;
+  padding: 0rem;
   border: 1px solid #cacaca;
   border-radius: 0;
   background-color: #fefefe;

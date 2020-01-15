@@ -6,14 +6,15 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SQL Test Website</title>
-  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/app.css"/>
+  <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
   <div class="off-canvas-wrapper">
     <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-transition="overlap">
       <ul class="vertical menu">
-        <li><a href="https://google.de">Foundation</a></li>
+        <li><a href="SQL_Test.html">Login</a></li>
         <li><a href="#">Dot</a></li>
         <li><a href="#">ZURB</a></li>
         <li><a href="#">Ben</a></li>
@@ -27,8 +28,15 @@
     <div class="off-canvas-content" data-off-canvas-content>
       <div class="grid-container">
         <div class="grid-x grid-margin-x">
-            <button type="button" class="button" data-toggle="offCanvas">Menu</button>
+            <button type="button" class="button" data-toggle="offCanvas">
+              <li><i class="fi-list"></i> <span>Menü</span></li>
+            </button>
             <h1>Hello World!</h1>
+        <div class="grid-x grid-margin-x">
+              <span aria-hidden="true">&times;</span>
+            </button>            
+          </div>
+        </div>
         </div>
       </div>
     </div>
