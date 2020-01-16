@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<html>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
 <body>
-<p>Seite abgerufen am <?php
-    echo ( date('d.m.Y \u\m H:i:s') );
-    ?> Uhr</p>
+
+<h1>Fang SQL Test</h1>
+
+<input type="text" onchange="showFang(this.value)">
+<br>
+<div id="txtHint">Fang Info sthet hier...</div>
+
+<script>
+function showFang(str) {
+  var xhttp;    
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "getfang.php?q="+str, true);
+  xhttp.send();
+}
+</script>
+
 </body>
 </html>
