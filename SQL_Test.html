@@ -10,32 +10,32 @@ table, th, td {
 <body>
 
 <?php
-$servername = "192.168.2.226";
-$username = "newuser";
-$password = "Fangtest.";
-$dbname = "fang";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-$sql = "SELECT Mitglieder.Name, Mitglieder.Nachname, Mitglieder.Geburtsdatum, Mitglieder.Rang, Fische.Fischname, Fang.Gewicht, Fang.Anzahl, Gewässer.Gewässername
-FROM Mitglieder INNER JOIN (Gewässer INNER JOIN (Fische INNER JOIN Fang ON Fische.F_ID = Fang.F_ID) ON Gewässer.G_ID = Fang.G_ID) ON Mitglieder.M_ID = Fang.M_ID
-WHERE Fang.FG_ID = 4";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    echo "<table><tr><th>ID</th><th>Name</th></tr>";
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["Rang"]. "</td><td>" . $row["Name"]. " " . $row["Nachname"]. "</td></tr>";
+    $host = 'mydemoserver.mysql.database.azure.com';
+    $username = 'myadmin@mydemoserver';
+    $password = 'your_password';
+    $db_name = 'your_database';
+    
+    //Establishes the connection
+    $conn = mysqli_init();
+    mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
+    if (mysqli_connect_errno($conn)) {
+    die('Failed to connect to MySQL: '.mysqli_connect_error());
     }
-    echo "</table>";
-} else {
-    echo "0 results";
-}
-
-$conn->close();
-?> 
+    
+    // Run the create table query
+    if (mysqli_query($conn, '
+    CREATE TABLE Products (
+    `Id` INT NOT NULL AUTO_INCREMENT ,
+    `ProductName` VARCHAR(200) NOT NULL ,
+    `Color` VARCHAR(50) NOT NULL ,
+    `Price` DOUBLE NOT NULL ,
+    PRIMARY KEY (`Id`)
+    );
+    ')) {
+    printf("Table created\n");
+    }
+    
+    //Close the connection
+    mysqli_close($conn);
+    ?>
+</body>
